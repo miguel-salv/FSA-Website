@@ -1,0 +1,104 @@
+{
+    "alumni": [
+        {
+            "year": 2023,
+            "graduates": [
+                {
+                    "name": "Isabella Santos",
+                    "major": "Information Systems"
+                },
+                {
+                    "name": "Miguel Bautista",
+                    "major": "Electrical & Computer Engineering"
+                },
+                {
+                    "name": "Teresa Ramos",
+                    "major": "Architecture"
+                },
+                {
+                    "name": "David Cruz",
+                    "major": "Computer Science"
+                },
+                {
+                    "name": "Amanda Lopez",
+                    "major": "Psychology"
+                }
+            ]
+        },
+        {
+            "year": 2022,
+            "graduates": [
+                {
+                    "name": "Carlos Mendoza",
+                    "major": "Design"
+                },
+                {
+                    "name": "Sophia Garcia",
+                    "major": "Chemical Engineering"
+                },
+                {
+                    "name": "Jason Reyes",
+                    "major": "Statistics & Machine Learning"
+                },
+                {
+                    "name": "Maria Flores",
+                    "major": "Global Studies"
+                },
+                {
+                    "name": "Ryan Domingo",
+                    "major": "Business Administration"
+                }
+            ]
+        },
+        {
+            "year": 2021,
+            "graduates": [
+                {
+                    "name": "Sofia Reyes",
+                    "major": "Mechanical Engineering"
+                },
+                {
+                    "name": "Anthony Santos",
+                    "major": "Computer Science"
+                },
+                {
+                    "name": "Nina Rodriguez",
+                    "major": "Drama"
+                },
+                {
+                    "name": "Jose Bautista",
+                    "major": "Chemistry"
+                },
+                {
+                    "name": "Lisa Dizon",
+                    "major": "Business Administration"
+                }
+            ]
+        },
+        {
+            "year": 2020,
+            "graduates": [
+                {
+                    "name": "Marco de la Cruz",
+                    "major": "Business Administration"
+                },
+                {
+                    "name": "Olivia Santos",
+                    "major": "Civil Engineering"
+                },
+                {
+                    "name": "Gabriel Tan",
+                    "major": "Information Systems"
+                },
+                {
+                    "name": "Angela Reyes",
+                    "major": "Psychology"
+                },
+                {
+                    "name": "Daniel Lopez",
+                    "major": "Computer Science"
+                }
+            ]
+        }
+    ]
+} 

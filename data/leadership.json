@@ -1,0 +1,41 @@
+{
+    "executiveBoard": [
+        {
+            "name": "Luke Orlan Balaguer",
+            "position": "President",
+            "email": "lbalague@andrew.cmu.edu",
+            "image": "images/president.jpg"
+        },
+        {
+            "name": "Alessandra Fusaro",
+            "position": "Vice President",
+            "image": "images/vice-president.jpg"
+        },
+        {
+            "name": "Miguel Salvacion",
+            "position": "Treasurer",
+            "image": "images/treasurer.jpg"
+        },
+        {
+            "name": "Emma Sawi",
+            "position": "Secretary",
+            "image": "images/secretary.jpg"
+        },
+        {
+            "name": "Rebecca Sucgang",
+            "position": "Social Media Officer",
+            "image": "images/social-media.jpg"
+        },
+        {
+            "name": "Elena Nunez",
+            "position": "Design Chair",
+            "image": "images/design.jpg"
+        }
+    ],
+    "facultyAdvisor": {
+        "name": "Conrad Zapanta",
+        "image": "images/advisor.jpg",
+        "title": "Teaching Professor, Biomedical Engineering\nAssociate Dean for Undergraduate Studies, Biomedical Engineering",
+        "email": "czapanta@andrew.cmu.edu"
+    }
+} 

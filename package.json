@@ -1,0 +1,19 @@
+{
+  "name": "fsa-website",
+  "version": "1.0.0",
+  "description": "Filipino Student Association at CMU Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "googleapis": "^126.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
+ 

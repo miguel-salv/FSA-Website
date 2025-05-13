@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filipino Student Association | Carnegie Mellon University</title>
+    <meta name="description" content="The official website of the Filipino Student Association at Carnegie Mellon University">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="FSA, Filipino Student Association, CMU, Carnegie Mellon, Filipino culture, student organization">
+    <meta name="author" content="Filipino Student Association at CMU">
+    
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Filipino Student Association | Carnegie Mellon University">
+    <meta property="og:description" content="Join us in celebrating Filipino culture and building community at CMU">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fsa-cmu.org">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Filipino Student Association at CMU",
+        "url": "https://fsa-cmu.org",
+        "logo": "https://fsa-cmu.org/images/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/fsacmu",
+            "https://www.instagram.com/fsacmu"
+        ]
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Custom JavaScript -->
+    <script src="js/components.js"></script>
+    <script src="js/events.js"></script>
+</head>
+<body>
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Filipino Student Association</h1>
+                <p>Connecting Filipino and Filipino-American students at Carnegie Mellon University through culture, community, and celebration</p>
+                <div class="hero-buttons">
+                    <a href="https://tartanconnect.cmu.edu/filipino/club_signup" target="_blank" class="btn">Get Involved</a>
+                    <a href="events.html" class="btn" style="background: rgba(255,255,255,0.2); margin-left: 15px;">Upcoming Events</a>
+                </div>
+                <div class="hero-decoration">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About Us</h2>
+                </div>
+                
+                <div class="about-grid">
+                    <!-- Mission Section -->
+                    <div class="about-item">
+                        <div class="about-image">
+                            <img src="images/mission-image.jpg" alt="FSA Mission">
+                        </div>
+                        <div class="about-content">
+                            <h3><i class="fas fa-star"></i> Our Mission</h3>
+                            <p>The Filipino Student Association (FSA) at Carnegie Mellon University aims to promote Filipino culture, traditions, and values within the CMU community. We provide a supportive environment for Filipino and Filipino-American students while sharing our rich heritage with the broader campus.</p>
+                        </div>
+                    </div>
+
+                    <!-- What We Do Section -->
+                    <div class="about-item">
+                        <div class="about-image">
+                            <img src="images/events-image.jpg" alt="FSA Events">
+                        </div>
+                        <div class="about-content">
+                            <h3><i class="fas fa-calendar-alt"></i> What We Do</h3>
+                            <p>FSA hosts cultural celebrations, educational workshops, community service initiatives, and social events throughout the academic year. We collaborate with other cultural organizations at CMU and in the Pittsburgh area to foster inclusion and diversity.</p>
+                        </div>
+                    </div>
+
+                    <!-- Barkada Dance Team Section -->
+                    <div class="about-item">
+                        <div class="about-image">
+                            <img src="images/dance-team.jpg" alt="Barkada Dance Team">
+                        </div>
+                        <div class="about-content">
+                            <h3><i class="fas fa-music"></i> Barkada Dance Team</h3>
+                            <p>Our Barkada dance team is a vibrant part of FSA that showcases traditional Filipino dances, including the iconic tinikling. The team performs at various campus events and participates in the Dancers Symposium every semester, sharing the beauty and grace of Filipino cultural dance with the CMU community.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-cta">
+                    <h3>Join Our Community</h3>
+                    <p>Whether you're Filipino, Filipino-American, or simply interested in learning about Filipino culture, we welcome you to join our community! No prior knowledge of Filipino culture or language is required - just bring your enthusiasm and curiosity.</p>
+                    <a href="https://tartanconnect.cmu.edu/filipino/club_signup" class="btn">Get Involved</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="upcoming-events">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Upcoming Events</h2>
+                </div>
+                
+                <div class="events-container">
+                    <!-- Events will be loaded dynamically -->
+                </div>
+                
+                <div class="events-cta" style="text-align: center; margin-top: 3rem;">
+                    <a href="events.html" class="btn">View All Events</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
