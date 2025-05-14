@@ -77,7 +77,7 @@ function createEventCard(event) {
 // Function to load events from API
 async function loadEvents() {
     try {
-        const response = await fetch('http://localhost:3000/api/events');
+        const response = await fetch('/api/events');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

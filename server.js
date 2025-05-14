@@ -3,6 +3,7 @@ const express = require('express');
 const { google } = require('googleapis');
 const path = require('path');
 const app = express();
+const config = require('./src/config.js');
 
 // Enable CORS
 app.use((req, res, next) => {
@@ -18,10 +19,10 @@ app.use(express.static('.'));
 const calendar = google.calendar('v3');
 const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 
-// Load credentials from environment variables or config file
+// Load credentials from environment variables
 const credentials = {
-    client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+    client_email: config.GOOGLE_CLIENT_EMAIL,
+    private_key: config.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
 };
 
 // Create JWT client
@@ -37,7 +38,7 @@ app.get('/api/events', async (req, res) => {
     try {
         // Log the credentials being used (without private key)
         console.log('Using service account:', credentials.client_email);
-        console.log('Calendar ID:', process.env.GOOGLE_CALENDAR_ID);
+        console.log('Calendar ID:', config.GOOGLE_CALENDAR_ID);
 
         // Verify credentials
         if (!credentials.client_email || !credentials.private_key) {
@@ -50,9 +51,8 @@ app.get('/api/events', async (req, res) => {
 
         const response = await calendar.events.list({
             auth: auth,
-            calendarId: process.env.GOOGLE_CALENDAR_ID,
+            calendarId: config.GOOGLE_CALENDAR_ID,
             timeMin: new Date().toISOString(),
-            maxResults: 3,
             singleEvents: true,
             orderBy: 'startTime',
         });
@@ -100,5 +100,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log('Environment:', process.env.NODE_ENV);
-    console.log('Calendar ID:', process.env.GOOGLE_CALENDAR_ID);
+    console.log('Calendar ID:', config.GOOGLE_CALENDAR_ID);
 }); 
