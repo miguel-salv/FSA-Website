@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const config = {
+const backendConfig = {
     GOOGLE_CLIENT_EMAIL: process.env.GOOGLE_CLIENT_EMAIL,
     GOOGLE_PRIVATE_KEY: process.env.GOOGLE_PRIVATE_KEY,
     GOOGLE_CALENDAR_ID: process.env.GOOGLE_CALENDAR_ID
@@ -8,7 +8,7 @@ const config = {
 
 // Validate required environment variables
 const requiredEnvVars = ['GOOGLE_CLIENT_EMAIL', 'GOOGLE_PRIVATE_KEY', 'GOOGLE_CALENDAR_ID'];
-const missingEnvVars = requiredEnvVars.filter(envVar => !config[envVar]);
+const missingEnvVars = requiredEnvVars.filter(envVar => !backendConfig[envVar]);
 
 if (missingEnvVars.length > 0) {
     console.error('Missing required environment variables:', missingEnvVars);
@@ -19,4 +19,4 @@ if (missingEnvVars.length > 0) {
     }
 }
 
-module.exports = config; 
+module.exports = backendConfig; 

@@ -1,3 +1,5 @@
+import frontendConfig from './config.js';
+
 // Function to format date and time
 function formatDateTime(dateString) {
     const date = new Date(dateString);
@@ -77,7 +79,7 @@ function createEventCard(event) {
 // Function to load events from API
 async function loadEvents() {
     try {
-        const response = await fetch('/api/events');
+        const response = await fetch(`${frontendConfig.baseUrl}/api/events`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
