@@ -1,8 +1,6 @@
-import frontendConfig from './config.js';
-
 async function loadCalendarSubscription() {
     try {
-        const response = await fetch(`${frontendConfig.baseUrl}/data/calendar.json`);
+        const response = await fetch('./data/calendar.json');
         const data = await response.json();
         const calendarLink = document.getElementById('calendar-subscription-link');
         if (calendarLink && data.subscriptionUrl) {
