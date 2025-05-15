@@ -54,7 +54,10 @@ async function initCalendar() {
         await loadScript('https://cdn.jsdelivr.net/npm/moment@2/moment.min.js');
 
         // Load calendar subscription URL
-        const calendarConfigResponse = await fetch('/data/calendar.json');
+        const calendarConfigResponse = await fetch('data/calendar.json');
+        if (!calendarConfigResponse.ok) {
+            throw new Error(`Failed to load calendar config: ${calendarConfigResponse.status}`);
+        }
         const calendarConfig = await calendarConfigResponse.json();
         const subscriptionLink = document.getElementById('calendar-subscription-link');
         if (subscriptionLink && calendarConfig.subscriptionUrl) {
@@ -70,13 +73,18 @@ async function initCalendar() {
         let events;
         if (isDevelopment) {
             // In development, fetch from local file
-            const response = await fetch('/calendar-events.json');
+            const response = await fetch('calendar-events.json');
+            if (!response.ok) {
+                throw new Error(`Failed to load events: ${response.status}`);
+            }
             events = await response.json();
         } else {
             // In production, fetch from GitHub
-            const response = await fetch(`https://api.github.com/repos/${window.appConfig.githubRepo}/contents/calendar-events.json`);
-            const data = await response.json();
-            events = JSON.parse(atob(data.content));
+            const response = await fetch('calendar-events.json');
+            if (!response.ok) {
+                throw new Error(`Failed to load events: ${response.status}`);
+            }
+            events = await response.json();
         }
 
         if (events && events.length > 0) {
