@@ -162,3 +162,65 @@ If you encounter any issues:
    - Ensure all environment variables are properly set
    - Check that the calendar ID is correct
 5. If all else fails, contact miguelsalvacion42@gmail.com for technical support
+
+## Deployment Guide
+
+The website is deployed on Render. Here's how to manage deployments:
+
+### Initial Setup (First-time only)
+
+1. Create a Render account at render.com
+2. Connect your GitHub repository
+3. Create a new Web Service:
+   - Select your repository
+   - Name: fsa-website
+   - Environment: Node
+   - Build Command: `npm install`
+   - Start Command: `node server.js`
+
+### Environment Variables
+
+Set these in Render's dashboard:
+- `GOOGLE_CLIENT_EMAIL`
+- `GOOGLE_PRIVATE_KEY`
+- `GOOGLE_CALENDAR_ID`
+- `NODE_ENV=production`
+
+### Managing Deployments
+
+1. Automatic Deployments:
+   - Pushing to the main branch automatically triggers a deployment
+   - Render will build and deploy the latest changes
+
+2. Manual Deployments:
+   - Go to the Render dashboard
+   - Select your service
+   - Click "Manual Deploy"
+   - Choose the branch to deploy
+
+3. Rollbacks:
+   - Go to the Render dashboard
+   - Select your service
+   - Click "Deploys"
+   - Find the version you want to roll back to
+   - Click "Redeploy"
+
+### Monitoring
+
+1. View logs:
+   - Go to the Render dashboard
+   - Select your service
+   - Click "Logs"
+
+2. Check status:
+   - The dashboard shows current status
+   - Green = running
+   - Yellow = deploying
+   - Red = error
+
+### Important Notes
+
+- The free tier will spin down after 15 minutes of inactivity
+- First request after spin-down may be slow
+- All environment variables are encrypted in Render
+- Keep your Render account credentials secure

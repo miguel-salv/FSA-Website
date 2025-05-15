@@ -1,0 +1,28 @@
+[
+  {
+    "id": "sample1",
+    "summary": "FSA General Body Meeting",
+    "description": "Join us for our weekly general body meeting!",
+    "start": {
+      "dateTime": "2025-05-16T21:27:28.034Z"
+    },
+    "end": {
+      "dateTime": "2025-05-16T23:27:28.035Z"
+    },
+    "location": "Cohon University Center",
+    "htmlLink": "https://calendar.google.com"
+  },
+  {
+    "id": "sample2",
+    "summary": "Cultural Night Practice",
+    "description": "Practice for our upcoming cultural night performance",
+    "start": {
+      "dateTime": "2025-05-17T21:27:28.035Z"
+    },
+    "end": {
+      "dateTime": "2025-05-18T00:27:28.035Z"
+    },
+    "location": "Rangos Ballroom",
+    "htmlLink": "https://calendar.google.com"
+  }
+]

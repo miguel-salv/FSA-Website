@@ -1,0 +1,37 @@
+name: Update Calendar Events
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Run every hour
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  update-calendar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to commit and push changes
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: npm install googleapis
+        
+      - name: Update calendar events
+        env:
+          GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+        run: |
+          node scripts/update-calendar.js
+          
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add calendar-events.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update calendar events" && git push) 

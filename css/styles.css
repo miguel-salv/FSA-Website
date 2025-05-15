@@ -1950,35 +1950,79 @@ footer {
 }
 
 .calendar-container {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 0;
-}
-
-.calendar-card {
-  background-color: var(--white);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-md);
-  padding: 3rem;
-  max-width: 600px;
   width: 100%;
-  text-align: center;
-  transition: var(--transition-normal);
-  border: 1px solid var(--gray);
-}
-
-.calendar-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
-}
-
-.calendar-card h3 {
-  margin-bottom: 1.5rem;
-  color: var(--primary-color);
-}
-
-.calendar-card p {
+  min-height: 600px;
   margin-bottom: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+#calendar {
+  width: 100%;
+  height: 100%;
+}
+
+/* FullCalendar Custom Styles */
+.fc {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.fc .fc-toolbar-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.fc .fc-button {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+.fc .fc-button:hover {
+  background-color: var(--primary-color-dark);
+  border-color: var(--primary-color-dark);
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: var(--primary-color-dark);
+  border-color: var(--primary-color-dark);
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: var(--accent-color-light);
+}
+
+.fc .fc-event {
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 0.9rem;
+}
+
+.fc .fc-event-title {
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .calendar-container {
+    min-height: 400px;
+  }
+  
+  .fc .fc-toolbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .fc .fc-toolbar-title {
+    font-size: 1.5rem;
+  }
 }
 
 .suggest-event-content {
@@ -2805,4 +2849,199 @@ footer {
   .about-cta p {
     font-size: 1rem;
   }
+}
+
+.stay-connected {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 2.5rem;
+    margin-top: 2rem;
+    border: 1px solid var(--gray);
+    transition: var(--transition-normal);
+}
+
+.stay-connected:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary-color);
+}
+
+.stay-connected-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.stay-connected .icon-wrapper {
+    background: var(--gradient-primary);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition-normal);
+}
+
+.stay-connected:hover .icon-wrapper {
+    background: var(--gradient-secondary);
+    transform: scale(1.1);
+}
+
+.stay-connected .icon-wrapper i {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.stay-connected .text-content {
+    flex: 1;
+}
+
+.stay-connected h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.calendar-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 3rem;
+    margin-top: 2rem;
+    text-align: center;
+    transition: var(--transition-normal);
+    border: 1px solid var(--gray);
+    position: relative;
+    overflow: hidden;
+}
+
+.calendar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.calendar-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.calendar-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 2rem;
+    transition: var(--transition-normal);
+}
+
+.calendar-card:hover .calendar-icon {
+    background: var(--gradient-secondary);
+    color: var(--text-color);
+    transform: scale(1.1);
+}
+
+.calendar-card h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.calendar-card p {
+    color: var(--text-color-light);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calendar-card .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--gradient-primary);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-primary);
+}
+
+.calendar-card .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    background: var(--gradient-secondary);
+    color: var(--text-color);
+}
+
+.calendar-card .btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.calendar-card .btn:hover i {
+    transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+    .calendar-card {
+        padding: 2rem;
+    }
+    
+    .calendar-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .calendar-card p {
+        font-size: 0.95rem;
+    }
+    
+    .calendar-card .btn {
+        width: 100%;
+    }
+}
+
+.wellness-calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.wellness-calendar td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray);
+}
+
+.wellness-calendar tr:last-child td {
+    border-bottom: none;
+}
+
+.wellness-calendar td:first-child {
+    width: 200px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.wellness-calendar td:last-child {
+    color: var(--text-color);
+}
+
+.error-message {
+    color: var(--error-color);
+    text-align: center;
+    padding: 2rem;
+    font-style: italic;
 }
