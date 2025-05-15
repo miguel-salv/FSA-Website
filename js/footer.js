@@ -7,16 +7,16 @@ document.addEventListener('componentsLoaded', async () => {
         console.log('JSON response:', response);
         const data = await response.json();
         console.log('Leadership data:', data);
-        
+
         const president = data.executiveBoard.find(member => member.position === 'President');
         console.log('Found president:', president);
-        
+
         if (president) {
             const contactName = document.getElementById('president-name');
             const contactEmail = document.getElementById('president-email');
-            
+
             console.log('Contact elements:', { contactName, contactEmail });
-            
+
             if (contactName && contactEmail) {
                 contactName.textContent = president.name;
                 contactEmail.innerHTML = `<a href="mailto:${president.email}"><i class="fas fa-envelope"></i> ${president.email}</a>`;
@@ -30,4 +30,4 @@ document.addEventListener('componentsLoaded', async () => {
     } catch (error) {
         console.error('Error loading leadership data:', error);
     }
-}); 
+});

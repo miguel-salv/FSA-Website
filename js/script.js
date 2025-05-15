@@ -4,13 +4,13 @@ function initializeMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
 
     if (menuIcon && navMenu) {
-        menuIcon.addEventListener('click', function() {
+        menuIcon.addEventListener('click', function () {
             navMenu.classList.toggle('active');
             menuIcon.classList.toggle('active');
         });
 
         // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             if (!event.target.closest('.nav-menu') && !event.target.closest('.menu-icon')) {
                 navMenu.classList.remove('active');
                 menuIcon.classList.remove('active');
@@ -20,7 +20,7 @@ function initializeMobileMenu() {
         // Close menu when clicking on a menu item
         const menuItems = document.querySelectorAll('.nav-menu a');
         menuItems.forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 navMenu.classList.remove('active');
                 menuIcon.classList.remove('active');
             });
@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Wait for header to be loaded
     const headerContainer = document.getElementById('header-container');
     if (headerContainer) {
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
                 if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
                     const navMenu = document.querySelector('.nav-menu');
                     if (navMenu) {
@@ -47,4 +47,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         observer.observe(headerContainer, { childList: true });
     }
-}); 
+});
