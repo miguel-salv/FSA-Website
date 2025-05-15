@@ -5,7 +5,8 @@ async function loadJSON(url) {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        return await response.json();
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.error('Error loading JSON:', error);
         return null;
@@ -15,16 +16,24 @@ async function loadJSON(url) {
 // Function to render executive board members
 async function renderExecutiveBoard() {
     const data = await loadJSON('data/leadership.json');
-    if (!data) return;
+    if (!data) {
+        console.error('Failed to load leadership data');
+        return;
+    }
 
     const container = document.querySelector('.team-container');
-    if (!container) return;
+    if (!container) {
+        console.error('Team container not found in the DOM');
+        return;
+    }
 
     // Clear existing content
     container.innerHTML = '';
-    
+
     // Add all team member cards at once
-    const cardsHTML = data.executiveBoard.map(member => `
+    const cardsHTML = data.executiveBoard
+        .map(
+            member => `
         <div class="team-member">
             <div class="member-image">
                 <img src="${member.image}" alt="${member.name}">
@@ -34,18 +43,26 @@ async function renderExecutiveBoard() {
                 <p class="member-position">${member.position}</p>
             </div>
         </div>
-    `).join('');
-    
+    `
+        )
+        .join('');
+
     container.innerHTML = cardsHTML;
 }
 
 // Function to render faculty advisor
 async function renderFacultyAdvisor() {
     const data = await loadJSON('data/leadership.json');
-    if (!data) return;
+    if (!data) {
+        console.error('Failed to load leadership data');
+        return;
+    }
 
     const container = document.querySelector('.advisor-container');
-    if (!container) return;
+    if (!container) {
+        console.error('Advisor container not found in the DOM');
+        return;
+    }
 
     const advisor = data.facultyAdvisor;
     container.innerHTML = `
@@ -72,29 +89,42 @@ async function renderAlumni() {
     const container = document.querySelector('.alumni-by-year-container');
     if (!container) return;
 
-    container.innerHTML = data.alumni.map(yearGroup => `
+    container.innerHTML = data.alumni
+        .map(
+            yearGroup => `
         <div class="alumni-year-group">
             <div class="year-header">
                 <i class="fas fa-calendar-alt" style="color: var(--secondary-color); margin-right: 10px;"></i>
                 <h3>Class of ${yearGroup.year}</h3>
             </div>
             <ul class="alumni-list">
-                ${yearGroup.graduates.map(graduate => `
+                ${yearGroup.graduates
+                    .map(
+                        graduate => `
                     <li>${graduate.name} - ${graduate.major}</li>
-                `).join('')}
+                `
+                    )
+                    .join('')}
             </ul>
         </div>
-    `).join('');
+    `
+        )
+        .join('');
 }
 
 // Initialize data loading based on current page
-document.addEventListener('DOMContentLoaded', () => {
-    const currentPage = window.location.pathname.split('/').pop();
-    
+document.addEventListener('componentsLoaded', () => {
+    const path = window.location.pathname;
+    const currentPage = path.includes('leadership')
+        ? 'leadership.html'
+        : path.includes('alumni')
+          ? 'alumni.html'
+          : path.split('/').pop();
+
     if (currentPage === 'leadership.html') {
         renderExecutiveBoard();
         renderFacultyAdvisor();
     } else if (currentPage === 'alumni.html') {
         renderAlumni();
     }
-}); 
+});

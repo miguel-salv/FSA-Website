@@ -10,14 +10,21 @@ function loadScript(src) {
 }
 
 function generateColorFromTitle(title) {
-    const hue = Math.floor(Math.random() * 360);
-    const saturation = Math.floor(Math.random() * 40) + 60;
-    const bgLightness = Math.floor(Math.random() * 20) + 75;
-    const patternLightness = Math.floor(Math.random() * 20) + 55;
-    
+    // Create a hash from the title
+    let hash = 0;
+    for (let i = 0; i < title.length; i++) {
+        hash = title.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    // Use the hash to generate consistent colors
+    const hue = Math.abs(hash % 360);
+    const saturation = 70; // Fixed saturation for better consistency
+    const bgLightness = 85; // Fixed lightness for background
+    const patternLightness = 65; // Fixed lightness for pattern
+
     return {
         bgColor: `hsl(${hue}, ${saturation}%, ${bgLightness}%)`,
-        patternColor: `hsl(${hue}, ${saturation}%, ${patternLightness}%)`
+        patternColor: `hsl(${hue}, ${saturation}%, ${patternLightness}%)`,
     };
 }
 
@@ -46,12 +53,21 @@ async function initCalendar() {
         // Load required scripts
         await loadScript('https://cdn.jsdelivr.net/npm/moment@2/moment.min.js');
 
-        const userTimeZone = "America/New_York";
+        // Load calendar subscription URL
+        const calendarConfigResponse = await fetch('/data/calendar.json');
+        const calendarConfig = await calendarConfigResponse.json();
+        const subscriptionLink = document.getElementById('calendar-subscription-link');
+        if (subscriptionLink && calendarConfig.subscriptionUrl) {
+            subscriptionLink.href = calendarConfig.subscriptionUrl;
+        }
+
+        const userTimeZone = 'America/New_York';
         const calendarId = window.appConfig.googleCalendarId;
-        
+
         // Determine if we're in development mode
-        const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        
+        const isDevelopment =
+            window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
         let events;
         if (isDevelopment) {
             // In development, fetch from local file
@@ -59,7 +75,9 @@ async function initCalendar() {
             events = await response.json();
         } else {
             // In production, fetch from GitHub
-            const response = await fetch(`https://api.github.com/repos/${window.appConfig.githubRepo}/contents/calendar-events.json`);
+            const response = await fetch(
+                `https://api.github.com/repos/${window.appConfig.githubRepo}/contents/calendar-events.json`
+            );
             const data = await response.json();
             events = JSON.parse(atob(data.content));
         }
@@ -67,20 +85,19 @@ async function initCalendar() {
         if (events && events.length > 0) {
             const eventsContainer = document.getElementById('events-container');
             eventsContainer.classList.add('animated');
-            
-            events.forEach(function(event, index) {
-                const startDate = moment(event.start.dateTime).format("MMM D, YYYY");
-                const startTime = moment(event.start.dateTime).format("h:mm A");
-                const endTime = moment(event.end.dateTime).format("h:mm A");
+
+            events.forEach(function (event, index) {
+                const startDate = moment(event.start.dateTime).format('MMM D, YYYY');
+                const startTime = moment(event.start.dateTime).format('h:mm A');
+                const endTime = moment(event.end.dateTime).format('h:mm A');
                 const location = event.location || 'TBD';
-                
+
                 // Generate colors based on event title
                 const colors = generateColorFromTitle(event.summary);
                 const patternUrl = createFilipinoPattern(event.id, colors.patternColor);
-                
+
                 const eventCard = document.createElement('div');
                 eventCard.className = 'event-card fade-in';
-                eventCard.style.animationDelay = `${index * 0.1}s`;
                 eventCard.innerHTML = `
                     <div class="event-image" style="background-color: ${colors.bgColor};">
                         <div class="event-pattern" style="background-image: url('${patternUrl}')"></div>
@@ -133,4 +150,4 @@ async function initCalendar() {
 }
 
 // Start initialization when DOM is loaded
-document.addEventListener('DOMContentLoaded', initCalendar); 
+document.addEventListener('DOMContentLoaded', initCalendar);

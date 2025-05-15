@@ -25,12 +25,7 @@ const credentials = {
 };
 
 // Create JWT client
-const auth = new google.auth.JWT(
-    credentials.client_email,
-    null,
-    credentials.private_key,
-    SCOPES
-);
+const auth = new google.auth.JWT(credentials.client_email, null, credentials.private_key, SCOPES);
 
 // API endpoint to get events
 app.get('/api/events', async (req, res) => {
@@ -43,7 +38,7 @@ app.get('/api/events', async (req, res) => {
         if (!credentials.client_email || !credentials.private_key) {
             console.error('Missing credentials:', {
                 hasClientEmail: !!credentials.client_email,
-                hasPrivateKey: !!credentials.private_key
+                hasPrivateKey: !!credentials.private_key,
             });
             throw new Error('Missing Google Calendar credentials');
         }
@@ -59,7 +54,7 @@ app.get('/api/events', async (req, res) => {
 
         console.log('Calendar API Response:', {
             status: response.status,
-            eventCount: response.data.items?.length || 0
+            eventCount: response.data.items?.length || 0,
         });
 
         const events = response.data.items.map(event => ({
@@ -70,12 +65,14 @@ app.get('/api/events', async (req, res) => {
             location: event.location || 'TBD',
             description: event.description || '',
             image: 'images/event-default.jpg', // Default image
-            highlights: event.description ? event.description.split('\n').filter(line => line.trim()) : [],
+            highlights: event.description
+                ? event.description.split('\n').filter(line => line.trim())
+                : [],
             price: {
                 student: 0,
-                nonStudent: 0
+                nonStudent: 0,
             },
-            registrationLink: event.htmlLink
+            registrationLink: event.htmlLink,
         }));
 
         res.json({ events });
@@ -84,14 +81,14 @@ app.get('/api/events', async (req, res) => {
             message: error.message,
             code: error.code,
             status: error.status,
-            errors: error.errors
+            errors: error.errors,
         });
-        
+
         // Send more detailed error response
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Failed to fetch events',
             details: error.message,
-            code: error.code
+            code: error.code,
         });
     }
 });
@@ -101,4 +98,4 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log('Environment:', process.env.NODE_ENV);
     console.log('Calendar ID:', process.env.GOOGLE_CALENDAR_ID);
-}); 
+});

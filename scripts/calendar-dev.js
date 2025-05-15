@@ -1,5 +1,6 @@
 const { google } = require('googleapis');
 const fs = require('fs');
+require('dotenv').config();
 
 async function updateCalendarEvents() {
     try {
