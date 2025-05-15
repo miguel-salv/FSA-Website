@@ -1,7 +1,7 @@
 console.log('Footer script starting...');
 
-document.addEventListener('DOMContentLoaded', async () => {
-    console.log('DOM Content Loaded');
+document.addEventListener('componentsLoaded', async () => {
+    console.log('Components Loaded');
     try {
         const response = await fetch('./data/leadership.json');
         console.log('JSON response:', response);
@@ -12,16 +12,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('Found president:', president);
         
         if (president) {
-            const contactName = document.querySelector('.footer-section:nth-child(3) p:first-child');
-            const contactEmail = document.querySelector('.footer-section:nth-child(3) p:nth-child(2)');
+            const contactName = document.getElementById('president-name');
+            const contactEmail = document.getElementById('president-email');
             
             console.log('Contact elements:', { contactName, contactEmail });
             
             if (contactName && contactEmail) {
                 contactName.textContent = president.name;
-                contactEmail.innerHTML = `<i class="fas fa-envelope"></i> ${president.email}`;
+                contactEmail.innerHTML = `<a href="mailto:${president.email}"><i class="fas fa-envelope"></i> ${president.email}</a>`;
                 console.log('Updated contact information');
+            } else {
+                console.error('Could not find contact elements in the DOM');
             }
+        } else {
+            console.error('Could not find president in leadership data');
         }
     } catch (error) {
         console.error('Error loading leadership data:', error);

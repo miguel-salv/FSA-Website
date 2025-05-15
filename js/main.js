@@ -46,8 +46,8 @@ async function initializeComponents() {
     try {
         await loadComponent('header-container', 'components/header.html');
         await loadComponent('footer-container', 'components/footer.html');
-        // Remove the leadership data loading from here since it's handled in data-loader.js
-        // await loadLeadershipData();
+        // Dispatch event when components are loaded
+        document.dispatchEvent(new Event('componentsLoaded'));
     } catch (error) {
         console.error('Error initializing components:', error);
     }
