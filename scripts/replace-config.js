@@ -11,4 +11,4 @@ configContent = configContent
     .replace('{{GOOGLE_CALENDAR_API_KEY}}', process.env.GOOGLE_CALENDAR_API_KEY || '')
     .replace('{{GOOGLE_CALENDAR_ID}}', process.env.GOOGLE_CALENDAR_ID || '');
 
-fs.writeFileSync(configPath, configContent);
+fs.writeFileSync(configPath, configContent); 

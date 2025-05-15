@@ -26,14 +26,12 @@ async function renderExecutiveBoard() {
         console.error('Team container not found in the DOM');
         return;
     }
-
+    
     // Clear existing content
     container.innerHTML = '';
-
+    
     // Add all team member cards at once
-    const cardsHTML = data.executiveBoard
-        .map(
-            member => `
+    const cardsHTML = data.executiveBoard.map(member => `
         <div class="team-member">
             <div class="member-image">
                 <img src="${member.image}" alt="${member.name}">
@@ -43,10 +41,8 @@ async function renderExecutiveBoard() {
                 <p class="member-position">${member.position}</p>
             </div>
         </div>
-    `
-        )
-        .join('');
-
+    `).join('');
+    
     container.innerHTML = cardsHTML;
 }
 
@@ -89,42 +85,32 @@ async function renderAlumni() {
     const container = document.querySelector('.alumni-by-year-container');
     if (!container) return;
 
-    container.innerHTML = data.alumni
-        .map(
-            yearGroup => `
+    container.innerHTML = data.alumni.map(yearGroup => `
         <div class="alumni-year-group">
             <div class="year-header">
                 <i class="fas fa-calendar-alt" style="color: var(--secondary-color); margin-right: 10px;"></i>
                 <h3>Class of ${yearGroup.year}</h3>
             </div>
             <ul class="alumni-list">
-                ${yearGroup.graduates
-                    .map(
-                        graduate => `
+                ${yearGroup.graduates.map(graduate => `
                     <li>${graduate.name} - ${graduate.major}</li>
-                `
-                    )
-                    .join('')}
+                `).join('')}
             </ul>
         </div>
-    `
-        )
-        .join('');
+    `).join('');
 }
 
 // Initialize data loading based on current page
 document.addEventListener('componentsLoaded', () => {
     const path = window.location.pathname;
-    const currentPage = path.includes('leadership')
-        ? 'leadership.html'
-        : path.includes('alumni')
-          ? 'alumni.html'
-          : path.split('/').pop();
-
+    const currentPage = path.includes('leadership') ? 'leadership.html' : 
+                       path.includes('alumni') ? 'alumni.html' : 
+                       path.split('/').pop();
+    
     if (currentPage === 'leadership.html') {
         renderExecutiveBoard();
         renderFacultyAdvisor();
     } else if (currentPage === 'alumni.html') {
         renderAlumni();
     }
-});
+}); 

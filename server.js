@@ -1,13 +1,16 @@
-require('dotenv').config();
 const express = require('express');
-const { google } = require('googleapis');
 const path = require('path');
+const config = require('./src/config/config');
+const calendarService = require('./src/services/calendarService');
+const errorHandler = require('./src/middleware/errorHandler');
+
 const app = express();
 
-// Enable CORS
+// Enable CORS with config
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Origin', config.cors.origin);
+    res.header('Access-Control-Allow-Methods', config.cors.methods.join(', '));
+    res.header('Access-Control-Allow-Headers', config.cors.allowedHeaders.join(', '));
     next();
 });
 

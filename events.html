@@ -1,122 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Events | Filipino Student Association at CMU</title>
-        <meta
-            name="description"
-            content="Join the Filipino Student Association at Carnegie Mellon University for cultural celebrations, workshops, and community gatherings. Stay updated with our upcoming events and activities."
-        />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Filipino Student Association at CMU</title>
+    <meta name="description" content="Join the Filipino Student Association at Carnegie Mellon University for cultural celebrations, workshops, and community gatherings. Stay updated with our upcoming events and activities.">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="js/components.js" as="script">
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="FSA, Filipino Student Association, CMU, Carnegie Mellon, events, cultural events, workshops, Filipino culture, student organization, Pittsburgh">
+    <meta name="author" content="Filipino Student Association at CMU">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
 
-        <!-- Preload Critical Resources -->
-        <link rel="preload" href="css/styles.css" as="style" />
-        <link rel="preload" href="js/components.js" as="script" />
-        <link rel="preload" href="js/main.js" as="script" />
-        <link
-            rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap"
-            as="style"
-        />
-        <link
-            rel="preload"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-            as="style"
-        />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Custom JavaScript -->
+    <script src="js/config.js" defer></script>
+    <script src="js/components.js" defer></script>
+    <script src="js/calendar.js" defer></script>
+</head>
+<body>
+    <!-- Header Container -->
+    <div id="header-container"></div>
 
-        <!-- SEO Meta Tags -->
-        <meta
-            name="keywords"
-            content="FSA, Filipino Student Association, CMU, Carnegie Mellon, events, cultural events, workshops, Filipino culture, student organization, Pittsburgh"
-        />
-        <meta name="author" content="Filipino Student Association at CMU" />
-        <meta name="robots" content="index, follow" />
-        <meta name="language" content="English" />
-        <meta name="revisit-after" content="7 days" />
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Page Banner -->
+        <section class="page-banner" aria-labelledby="page-title">
+            <div class="container">
+                <h1 id="page-title">Events Calendar</h1>
+                <p>Stay updated with our upcoming events and activities</p>
+            </div>
+        </section>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap"
-            rel="stylesheet"
-        />
-
-        <!-- Font Awesome Icons -->
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/styles.css" />
-
-        <!-- Custom JavaScript -->
-        <script src="js/config.js" defer></script>
-        <script src="js/components.js" defer></script>
-        <script src="js/calendar.js" defer></script>
-    </head>
-    <body>
-        <!-- Header Container -->
-        <div id="header-container"></div>
-
-        <!-- Main Content -->
-        <main id="main-content" role="main">
-            <!-- Page Banner -->
-            <section class="page-banner" aria-labelledby="page-title">
-                <div class="container">
-                    <h1 id="page-title">Events Calendar</h1>
-                    <p>Stay updated with our upcoming events and activities</p>
+        <!-- Calendar Section -->
+        <section id="calendar" class="accent-section" aria-labelledby="calendar-title">
+            <div class="section-title">
+                <h2 id="calendar-title">Event Calendar</h2>
+            </div>
+            
+            <div class="container">
+                <div class="events-container" id="events-container">
+                    <!-- Event cards will be dynamically inserted here -->
                 </div>
-            </section>
-
-            <!-- Calendar Section -->
-            <section id="calendar" class="accent-section" aria-labelledby="calendar-title">
-                <div class="section-title">
-                    <h2 id="calendar-title">Event Calendar</h2>
-                </div>
-
-                <div class="container">
-                    <div class="events-container" id="events-container">
-                        <!-- Event cards will be dynamically inserted here -->
-                    </div>
-                    <div class="calendar-card">
-                        <div class="calendar-card-content">
-                            <div class="calendar-icon">
-                                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                            </div>
-                            <h3>Stay Connected</h3>
-                            <p>
-                                Stay up-to-date with all our events by subscribing to our Google
-                                Calendar. You'll receive notifications for upcoming events and any
-                                schedule changes.
-                            </p>
-                            <a
-                                href="#"
-                                id="calendar-subscription-link"
-                                class="btn"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="View FSA Calendar"
-                            >
-                                <i class="fas fa-calendar-plus"></i>
-                                Subscribe to Calendar
-                            </a>
+                <div class="calendar-card">
+                    <div class="calendar-card-content">
+                        <div class="calendar-icon">
+                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                         </div>
+                        <h3>Stay Connected</h3>
+                        <p>Stay up-to-date with all our events by subscribing to our Google Calendar. You'll receive notifications for upcoming events and any schedule changes.</p>
+                        <a href="#" id="calendar-subscription-link" class="btn" target="_blank" rel="noopener noreferrer" aria-label="View FSA Calendar">
+                            <i class="fas fa-calendar-plus"></i>
+                            Subscribe to Calendar
+                        </a>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
+    </main>
 
-        <!-- Back to Top Button -->
-        <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-            <i class="fas fa-arrow-up" aria-hidden="true"></i>
-        </button>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
-        <!-- Footer Container -->
-        <div id="footer-container"></div>
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
 
-        <!-- JavaScript -->
-        <script src="js/main.js" defer></script>
-    </body>
+    <!-- JavaScript -->
+    <script src="js/main.js" defer></script>
+</body>
 </html>

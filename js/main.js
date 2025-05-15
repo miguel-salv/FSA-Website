@@ -2,21 +2,23 @@
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded - main.js');
     // Initialize components
     initializeComponents();
-
+    
     // Initialize lazy loading
     initializeLazyLoading();
-
+    
     // Initialize back to top button
     initializeBackToTop();
-
+    
     // Initialize event listeners with passive option
     initializeEventListeners();
 });
 
 // Load components
 function loadComponent(containerId, componentPath) {
+    console.log(`Loading component: ${componentPath} into ${containerId}`);
     return new Promise((resolve, reject) => {
         const container = document.getElementById(containerId);
         if (container) {
@@ -24,6 +26,7 @@ function loadComponent(containerId, componentPath) {
                 .then(response => response.text())
                 .then(html => {
                     container.innerHTML = html;
+                    console.log(`Successfully loaded component: ${componentPath}`);
                     resolve();
                 })
                 .catch(error => {
@@ -31,6 +34,7 @@ function loadComponent(containerId, componentPath) {
                     reject(error);
                 });
         } else {
+            console.error(`Container ${containerId} not found`);
             reject(new Error(`Container ${containerId} not found`));
         }
     });
@@ -38,10 +42,12 @@ function loadComponent(containerId, componentPath) {
 
 // Initialize all components
 async function initializeComponents() {
+    console.log('Initializing components');
     try {
         await loadComponent('header-container', 'components/header.html');
         await loadComponent('footer-container', 'components/footer.html');
-        await loadLeadershipData();
+        // Remove the leadership data loading from here since it's handled in data-loader.js
+        // await loadLeadershipData();
     } catch (error) {
         console.error('Error initializing components:', error);
     }
@@ -50,24 +56,21 @@ async function initializeComponents() {
 // Lazy load images
 function initializeLazyLoading() {
     const lazyImages = document.querySelectorAll('img[data-src]');
-
+    
     if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.add('loaded');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            },
-            {
-                rootMargin: '50px 0px',
-                threshold: 0.01,
-            }
-        );
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
 
         lazyImages.forEach(img => imageObserver.observe(img));
     } else {
@@ -82,25 +85,21 @@ function initializeLazyLoading() {
 // Back to top button functionality
 function initializeBackToTop() {
     const backToTopButton = document.getElementById('back-to-top');
-
+    
     if (backToTopButton) {
         // Use passive event listener for better scroll performance
-        window.addEventListener(
-            'scroll',
-            () => {
-                if (window.scrollY > 300) {
-                    backToTopButton.classList.add('show');
-                } else {
-                    backToTopButton.classList.remove('show');
-                }
-            },
-            { passive: true }
-        );
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        }, { passive: true });
 
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth',
+                behavior: 'smooth'
             });
         });
     }
@@ -111,7 +110,7 @@ function initializeEventListeners() {
     // Add passive event listeners for touch events
     document.addEventListener('touchstart', () => {}, { passive: true });
     document.addEventListener('touchmove', () => {}, { passive: true });
-
+    
     // Handle form submissions
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
@@ -122,15 +121,15 @@ function initializeEventListeners() {
 // Handle form submissions
 function handleFormSubmit(event) {
     event.preventDefault();
-
+    
     const form = event.target;
     const submitButton = form.querySelector('button[type="submit"]');
-
+    
     if (submitButton) {
         submitButton.disabled = true;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     }
-
+    
     // Simulate form submission (replace with actual form submission logic)
     setTimeout(() => {
         if (submitButton) {
@@ -147,11 +146,11 @@ async function loadLeadershipData() {
         const response = await fetch('data/leadership.json');
         const data = await response.json();
         const president = data.executiveBoard.find(member => member.position === 'President');
-
+        
         if (president) {
             const presidentName = document.getElementById('president-name');
             const presidentEmail = document.getElementById('president-email');
-
+            
             if (presidentName && presidentEmail) {
                 presidentName.textContent = president.name;
                 presidentEmail.innerHTML = `<a href="mailto:${president.email}"><i class="fas fa-envelope"></i> ${president.email}</a>`;
@@ -162,31 +161,31 @@ async function loadLeadershipData() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const menuIcon = document.querySelector('.menu-icon');
     const navMenu = document.querySelector('.nav-menu');
-
+    
     if (menuIcon) {
-        menuIcon.addEventListener('click', function () {
+        menuIcon.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             menuIcon.classList.toggle('active');
         });
     }
-
+    
     // Close mobile menu when a link is clicked
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach(link => {
-        link.addEventListener('click', function () {
+        link.addEventListener('click', function() {
             navMenu.classList.remove('active');
             if (menuIcon) menuIcon.classList.remove('active');
         });
     });
-
+    
     // Add scroll class to header on scroll
     const header = document.querySelector('header');
     if (header) {
-        window.addEventListener('scroll', function () {
+        window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
@@ -194,42 +193,39 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
+    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return; // Skip if it's just "#"
-
+            
             // Only handle hash links on the home page
-            if (
-                window.location.pathname.endsWith('index.html') ||
-                window.location.pathname === '/'
-            ) {
+            if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
                 const target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
                     window.scrollTo({
                         top: target.offsetTop - 80, // Adjust for header height
-                        behavior: 'smooth',
+                        behavior: 'smooth'
                     });
                 }
             }
         });
     });
-
+    
     // Interactive FAQ items
     const faqItems = document.querySelectorAll('.faq-item');
     if (faqItems.length > 0) {
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
-
+            
             // Add click event to questions
-            question.addEventListener('click', function () {
+            question.addEventListener('click', function() {
                 // Toggle active class
                 item.classList.toggle('active');
-
+                
                 // Toggle answer visibility with a smooth transition
                 if (item.classList.contains('active')) {
                     answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -237,14 +233,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     answer.style.maxHeight = '0';
                 }
             });
-
+            
             // Initialize all answers to be collapsed
             answer.style.maxHeight = '0';
             answer.style.overflow = 'hidden';
             answer.style.transition = 'max-height 0.3s ease';
         });
     }
-
+    
     // Image lightbox for team member and alumni images
     const memberImages = document.querySelectorAll('.member-image img, .alumni-image img');
     if (memberImages.length > 0) {
@@ -258,17 +254,17 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
         document.body.appendChild(lightbox);
-
+        
         const lightboxImg = lightbox.querySelector('img');
         const lightboxClose = lightbox.querySelector('.lightbox-close');
-
+        
         // Add click event to images
         memberImages.forEach(img => {
             img.style.cursor = 'pointer';
-            img.addEventListener('click', function () {
+            img.addEventListener('click', function() {
                 lightboxImg.src = this.src;
                 lightbox.style.display = 'flex';
-
+                
                 // Add a small animation
                 lightbox.style.opacity = '0';
                 setTimeout(() => {
@@ -276,17 +272,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 10);
             });
         });
-
+        
         // Close lightbox on click
-        lightboxClose.addEventListener('click', function () {
+        lightboxClose.addEventListener('click', function() {
             lightbox.style.opacity = '0';
             setTimeout(() => {
                 lightbox.style.display = 'none';
             }, 300);
         });
-
+        
         // Close lightbox on background click
-        lightbox.addEventListener('click', function (e) {
+        lightbox.addEventListener('click', function(e) {
             if (e.target === lightbox) {
                 lightbox.style.opacity = '0';
                 setTimeout(() => {
@@ -295,24 +291,24 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
+    
     // Countdown timer for upcoming events
     const countdownElements = document.querySelectorAll('.event-countdown');
     if (countdownElements.length > 0) {
         countdownElements.forEach(countdown => {
             const eventDate = new Date(countdown.getAttribute('data-date')).getTime();
-
+            
             // Update countdown every second
-            const timer = setInterval(function () {
+            const timer = setInterval(function() {
                 const now = new Date().getTime();
                 const distance = eventDate - now;
-
+                
                 // Calculate days, hours, minutes, seconds
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+                
                 // Update countdown display
                 countdown.innerHTML = `
                     <div class="countdown-item">
@@ -332,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <span class="countdown-label">Seconds</span>
                     </div>
                 `;
-
+                
                 // If countdown is over
                 if (distance < 0) {
                     clearInterval(timer);
@@ -341,17 +337,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 1000);
         });
     }
-
+    
     // Add active class to nav items when scrolling
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function() {
         const sections = document.querySelectorAll('section[id]');
         let scrollPosition = window.scrollY + 100;
-
+        
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             const sectionId = section.getAttribute('id');
-
+            
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 document.querySelectorAll('.nav-menu a').forEach(link => {
                     link.classList.remove('active');
@@ -362,36 +358,36 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
+    
     // Simple form validation for contact form
     const contactForm = document.querySelector('#contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-
+            
             // Get form values
             const name = this.querySelector('#name').value.trim();
             const email = this.querySelector('#email').value.trim();
             const message = this.querySelector('#message').value.trim();
-
+            
             // Simple validation
             if (!name || !email || !message) {
                 alert('Please fill in all fields');
                 return;
             }
-
+            
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 alert('Please enter a valid email address');
                 return;
             }
-
+            
             // Show loading state
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
             submitBtn.classList.add('loading');
-
+            
             // Simulate form submission (replace with actual form submission)
             setTimeout(() => {
                 // Show success message
@@ -403,16 +399,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     <h3>Message Sent!</h3>
                     <p>Thank you for your message. We'll get back to you soon.</p>
                 `;
-
+                
                 contactForm.style.display = 'none';
                 formContainer.appendChild(successMessage);
-
+                
                 // Reset form
                 contactForm.reset();
             }, 1500);
         });
     }
-
+    
     // Dynamic year in copyright footer
     const copyrightYear = document.querySelector('.copyright p');
     if (copyrightYear) {
@@ -434,16 +430,14 @@ document.addEventListener('DOMContentLoaded', function () {
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth',
+                behavior: 'smooth'
             });
         });
     }
 });
 
 // Add CSS for our JavaScript features
-document.head.insertAdjacentHTML(
-    'beforeend',
-    `
+document.head.insertAdjacentHTML('beforeend', `
 <style>
     /* Lightbox Styles */
     .lightbox {
@@ -547,5 +541,4 @@ document.head.insertAdjacentHTML(
         100% { transform: scale(1); }
     }
 </style>
-`
-);
+`);

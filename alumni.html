@@ -1,133 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Alumni | Filipino Student Association at CMU</title>
-        <meta
-            name="description"
-            content="Alumni network of the Filipino Student Association at Carnegie Mellon University"
-        />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni | Filipino Student Association at CMU</title>
+    <meta name="description" content="Alumni network of the Filipino Student Association at Carnegie Mellon University">
 
-        <!-- SEO Meta Tags -->
-        <meta
-            name="keywords"
-            content="FSA, Filipino Student Association, CMU, Carnegie Mellon, Filipino culture, student organization"
-        />
-        <meta name="author" content="Filipino Student Association at CMU" />
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="FSA, Filipino Student Association, CMU, Carnegie Mellon, Filipino culture, student organization">
+    <meta name="author" content="Filipino Student Association at CMU">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Custom JavaScript -->
+    <script src="js/components.js"></script>
+    <script src="js/data-loader.js"></script>
+</head>
+<body>
+    <!-- Header Container -->
+    <div id="header-container"></div>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap"
-            rel="stylesheet"
-        />
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Page Banner -->
+        <section class="page-banner" style="background-image: url('images/alumni-banner.jpg');">
+            <div class="container">
+                <h1>Our Alumni Network</h1>
+                <p>A global community of Filipino and Filipino-American professionals</p>
+            </div>
+        </section>
 
-        <!-- Font Awesome Icons -->
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/styles.css" />
-
-        <!-- Custom JavaScript -->
-        <script src="js/components.js"></script>
-        <script src="js/data-loader.js"></script>
-    </head>
-    <body>
-        <!-- Header Container -->
-        <div id="header-container"></div>
-
-        <!-- Main Content -->
-        <main id="main-content">
-            <!-- Page Banner -->
-            <section class="page-banner" style="background-image: url('images/alumni-banner.jpg')">
-                <div class="container">
-                    <h1>Our Alumni Network</h1>
-                    <p>A global community of Filipino and Filipino-American professionals</p>
+        <!-- Alumni Intro Section -->
+        <section id="alumni-intro">
+            <div class="container">
+                <div class="section-title">
+                    <h2>FSA Alumni Community</h2>
                 </div>
-            </section>
-
-            <!-- Alumni Intro Section -->
-            <section id="alumni-intro">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>FSA Alumni Community</h2>
-                    </div>
-
-                    <div class="alumni-intro-content">
-                        <div class="alumni-intro-grid">
-                            <div class="alumni-intro-item">
-                                <div class="alumni-intro-icon">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <h3>Our Alumni Legacy</h3>
-                                <p>
-                                    Our alumni network consists of former FSA members who continue
-                                    to support and engage with our community after graduation. These
-                                    individuals have made significant contributions to FSA during
-                                    their time at Carnegie Mellon and now serve as mentors,
-                                    advisors, and professional connections for current members.
-                                </p>
+                
+                <div class="alumni-intro-content">
+                    <div class="alumni-intro-grid">
+                        <div class="alumni-intro-item">
+                            <div class="alumni-intro-icon">
+                                <i class="fas fa-graduation-cap"></i>
                             </div>
-
-                            <div class="alumni-intro-item">
-                                <div class="alumni-intro-icon">
-                                    <i class="fas fa-handshake"></i>
-                                </div>
-                                <h3>Staying Connected</h3>
-                                <p>
-                                    We maintain strong ties with our alumni through reunions,
-                                    networking events, and collaborative initiatives. Their ongoing
-                                    involvement enriches our organization and provides valuable
-                                    perspectives from those who have transitioned from campus life
-                                    to professional careers.
-                                </p>
+                            <h3>Our Alumni Legacy</h3>
+                            <p>Our alumni network consists of former FSA members who continue to support and engage with our community after graduation. These individuals have made significant contributions to FSA during their time at Carnegie Mellon and now serve as mentors, advisors, and professional connections for current members.</p>
+                        </div>
+                        
+                        <div class="alumni-intro-item">
+                            <div class="alumni-intro-icon">
+                                <i class="fas fa-handshake"></i>
                             </div>
-
-                            <div class="alumni-intro-item">
-                                <div class="alumni-intro-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <h3>Join Our Network</h3>
-                                <p>
-                                    As a graduate of our program, we'd love to hear from you! Update
-                                    your information to stay informed about alumni events and
-                                    opportunities to give back.
-                                </p>
-                                <a href="about.html" class="btn">Get Involved</a>
+                            <h3>Staying Connected</h3>
+                            <p>We maintain strong ties with our alumni through reunions, networking events, and collaborative initiatives. Their ongoing involvement enriches our organization and provides valuable perspectives from those who have transitioned from campus life to professional careers.</p>
+                        </div>
+                        
+                        <div class="alumni-intro-item">
+                            <div class="alumni-intro-icon">
+                                <i class="fas fa-users"></i>
                             </div>
+                            <h3>Join Our Network</h3>
+                            <p>As a graduate of our program, we'd love to hear from you! Update your information to stay informed about alumni events and opportunities to give back.</p>
+                            <a href="about.html" class="btn">Get Involved</a>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Alumni By Year Section -->
-            <section id="alumni-by-year">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Alumni By Year</h2>
-                    </div>
-
-                    <div class="alumni-by-year-container">
-                        <!-- Alumni will be loaded dynamically -->
-                    </div>
+        <!-- Alumni By Year Section -->
+        <section id="alumni-by-year">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Alumni By Year</h2>
                 </div>
-            </section>
-        </main>
+                
+                <div class="alumni-by-year-container">
+                    <!-- Alumni will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
 
-        <!-- Back to Top Button -->
-        <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-            <i class="fas fa-arrow-up"></i>
-        </button>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-        <!-- Footer Container -->
-        <div id="footer-container"></div>
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
 
-        <!-- JavaScript -->
-        <script src="js/main.js"></script>
-    </body>
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
 </html>

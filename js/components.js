@@ -5,15 +5,15 @@ async function loadComponent(elementId, componentPath) {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-
+        
         const html = await response.text();
         const container = document.getElementById(elementId);
         if (!container) {
             throw new Error(`Container ${elementId} not found`);
         }
-
+        
         container.innerHTML = html;
-
+        
         // Add animation class after a small delay to ensure smooth transition
         if (elementId === 'header-container') {
             setTimeout(() => {
@@ -45,11 +45,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Load header and footer components
         const headerLoaded = await loadComponent('header-container', 'components/header.html');
         const footerLoaded = await loadComponent('footer-container', 'components/footer.html');
-
+        
         // Dispatch a custom event when components are loaded
         const event = new CustomEvent('componentsLoaded');
         document.dispatchEvent(event);
     } catch (error) {
         console.error('Error during component loading:', error);
     }
-});
+}); 
