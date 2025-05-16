@@ -28,23 +28,7 @@ function initializeMobileMenu() {
     }
 }
 
-// Initialize mobile menu after header is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Wait for header to be loaded
-    const headerContainer = document.getElementById('header-container');
-    if (headerContainer) {
-        const observer = new MutationObserver(mutations => {
-            mutations.forEach(mutation => {
-                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                    const navMenu = document.querySelector('.nav-menu');
-                    if (navMenu) {
-                        observer.disconnect();
-                        initializeMobileMenu();
-                    }
-                }
-            });
-        });
-
-        observer.observe(headerContainer, { childList: true });
-    }
+// Initialize mobile menu after components are loaded
+document.addEventListener('componentsLoaded', () => {
+    initializeMobileMenu();
 });

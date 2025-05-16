@@ -3,8 +3,6 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM Content Loaded - main.js');
-    // Initialize components
-    initializeComponents();
 
     // Initialize lazy loading
     initializeLazyLoading();
@@ -14,26 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize event listeners with passive option
     initializeEventListeners();
-
-    // Mobile menu toggle
-    const menuIcon = document.querySelector('.menu-icon');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (menuIcon) {
-        menuIcon.addEventListener('click', function () {
-            navMenu.classList.toggle('active');
-            menuIcon.classList.toggle('active');
-        });
-    }
-
-    // Close mobile menu when a link is clicked
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            navMenu.classList.remove('active');
-            if (menuIcon) menuIcon.classList.remove('active');
-        });
-    });
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -115,19 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         copyrightYear.innerHTML = copyrightYear.innerHTML.replace('{{year}}', year);
     }
 });
-
-// Initialize all components
-async function initializeComponents() {
-    console.log('Initializing components');
-    try {
-        await loadComponent('header-container', 'components/header.html');
-        await loadComponent('footer-container', 'components/footer.html');
-        // Dispatch event when components are loaded
-        document.dispatchEvent(new Event('componentsLoaded'));
-    } catch (error) {
-        console.error('Error initializing components:', error);
-    }
-}
 
 // Lazy load images
 function initializeLazyLoading() {
