@@ -92,21 +92,43 @@ async function renderAlumni() {
     container.innerHTML = data.alumni
         .map(
             yearGroup => `
-        <div class="alumni-year-group">
+        <section class="alumni-year-section">
             <div class="year-header">
                 <i class="fas fa-calendar-alt" style="color: var(--secondary-color); margin-right: 10px;"></i>
                 <h3>Class of ${yearGroup.year}</h3>
             </div>
-            <ul class="alumni-list">
+            <div class="alumni-grid">
                 ${yearGroup.graduates
                     .map(
                         graduate => `
-                    <li>${graduate.name} - ${graduate.major}</li>
+                    <div class="alumni-card">
+                        <div class="alumni-card-top">
+                            <div class="alumni-image">
+                                <img src="${graduate.photo && graduate.photo.trim() !== '' ? graduate.photo : 'images/placeholder-profile.png'}" alt="${graduate.name}">
+                            </div>
+                            <div class="alumni-main-info">
+                                <h4 class="alumni-name">${graduate.name}</h4>
+                                <div class="alumni-major">${graduate.major}</div>
+                            </div>
+                        </div>
+                        <div class="alumni-job-info">
+                            <div class="alumni-job-title">${graduate.jobTitle || ''}</div>
+                            <div class="alumni-job-company">${graduate.company || ''}</div>
+                            <div class="alumni-job-location">${graduate.location ? `<i class='fas fa-map-marker-alt' style='margin-right:6px;color:var(--secondary-color);'></i>${graduate.location}` : ''}</div>
+                        </div>
+                        <div class="alumni-fsa-role">
+                            ${graduate.fsaRole ? `<span>${graduate.fsaRole}</span>` : ''}
+                        </div>
+                        <div class="alumni-contact">
+                            ${graduate.email ? `<a href="mailto:${graduate.email}" title="Email"><i class="fas fa-envelope"></i></a>` : ''}
+                            ${graduate.linkedin ? `<a href="${graduate.linkedin}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>` : ''}
+                        </div>
+                    </div>
                 `
                     )
                     .join('')}
-            </ul>
-        </div>
+            </div>
+        </section>
     `
         )
         .join('');

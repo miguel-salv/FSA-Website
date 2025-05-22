@@ -5,23 +5,47 @@
             "graduates": [
                 {
                     "name": "Isabella Santos",
-                    "major": "Information Systems"
+                    "major": "Information Systems",
+                    "email": "isabella.santos@email.com",
+                    "linkedin": "https://linkedin.com/in/isabellasantos",
+                    "jobTitle": "Product Manager",
+                    "company": "Google",
+                    "location": "San Francisco, CA",
+                    "fsaRole": "President (2022-2023)"
                 },
                 {
                     "name": "Miguel Bautista",
-                    "major": "Electrical & Computer Engineering"
+                    "major": "Electrical & Computer Engineering",
+                    "jobTitle": "Hardware Engineer",
+                    "company": "Apple",
+                    "location": "Cupertino, CA",
+                    "fsaRole": "Treasurer (2022-2023)"
                 },
                 {
                     "name": "Teresa Ramos",
-                    "major": "Architecture"
+                    "major": "Architecture",
+                    "email": "teresa.ramos@email.com",
+                    "jobTitle": "Junior Architect",
+                    "company": "SOM Architects",
+                    "location": "Chicago, IL",
+                    "fsaRole": "Cultural Committee Member"
                 },
                 {
                     "name": "David Cruz",
-                    "major": "Computer Science"
+                    "major": "Computer Science",
+                    "linkedin": "https://linkedin.com/in/davidcruz",
+                    "jobTitle": "Software Engineer",
+                    "company": "Meta",
+                    "location": "Menlo Park, CA",
+                    "fsaRole": "Webmaster"
                 },
                 {
                     "name": "Amanda Lopez",
-                    "major": "Psychology"
+                    "major": "Psychology",
+                    "jobTitle": "Research Assistant",
+                    "company": "Stanford University",
+                    "location": "Stanford, CA",
+                    "fsaRole": "Secretary (2022-2023)"
                 }
             ]
         },
@@ -30,23 +54,47 @@
             "graduates": [
                 {
                     "name": "Carlos Mendoza",
-                    "major": "Design"
+                    "major": "Design",
+                    "email": "carlos.mendoza@email.com",
+                    "linkedin": "https://linkedin.com/in/carlosmendoza",
+                    "jobTitle": "Brand Designer",
+                    "company": "Airbnb",
+                    "location": "San Francisco, CA",
+                    "fsaRole": "Social Committee Chair"
                 },
                 {
                     "name": "Sophia Garcia",
-                    "major": "Chemical Engineering"
+                    "major": "Chemical Engineering",
+                    "jobTitle": "Process Engineer",
+                    "company": "Procter & Gamble",
+                    "location": "Cincinnati, OH",
+                    "fsaRole": "Dance Team Captain"
                 },
                 {
                     "name": "Jason Reyes",
-                    "major": "Statistics & Machine Learning"
+                    "major": "Statistics & Machine Learning",
+                    "email": "jason.reyes@email.com",
+                    "jobTitle": "Data Scientist",
+                    "company": "Amazon",
+                    "location": "Seattle, WA",
+                    "fsaRole": "Vice President (2021-2022)"
                 },
                 {
                     "name": "Maria Flores",
-                    "major": "Global Studies"
+                    "major": "Global Studies",
+                    "jobTitle": "Program Coordinator",
+                    "company": "UNICEF",
+                    "location": "New York, NY",
+                    "fsaRole": "Community Outreach"
                 },
                 {
                     "name": "Ryan Domingo",
-                    "major": "Business Administration"
+                    "major": "Business Administration",
+                    "linkedin": "https://linkedin.com/in/ryandomingo",
+                    "jobTitle": "Financial Analyst",
+                    "company": "J.P. Morgan",
+                    "location": "New York, NY",
+                    "fsaRole": "Treasurer (2021-2022)"
                 }
             ]
         },
@@ -55,23 +103,46 @@
             "graduates": [
                 {
                     "name": "Sofia Reyes",
-                    "major": "Mechanical Engineering"
+                    "major": "Mechanical Engineering",
+                    "jobTitle": "Mechanical Engineer",
+                    "company": "Tesla",
+                    "location": "Fremont, CA",
+                    "fsaRole": "Logistics Chair"
                 },
                 {
                     "name": "Anthony Santos",
-                    "major": "Computer Science"
+                    "major": "Computer Science",
+                    "email": "anthony.santos@email.com",
+                    "jobTitle": "Backend Developer",
+                    "company": "Stripe",
+                    "location": "San Francisco, CA",
+                    "fsaRole": "President (2020-2021)"
                 },
                 {
                     "name": "Nina Rodriguez",
-                    "major": "Drama"
+                    "major": "Drama",
+                    "jobTitle": "Stage Manager",
+                    "company": "Broadway",
+                    "location": "New York, NY",
+                    "fsaRole": "Events Chair"
                 },
                 {
                     "name": "Jose Bautista",
-                    "major": "Chemistry"
+                    "major": "Chemistry",
+                    "jobTitle": "Lab Technician",
+                    "company": "Pfizer",
+                    "location": "Philadelphia, PA",
+                    "fsaRole": "Treasurer (2020-2021)"
                 },
                 {
                     "name": "Lisa Dizon",
-                    "major": "Business Administration"
+                    "major": "Business Administration",
+                    "email": "lisa.dizon@email.com",
+                    "linkedin": "https://linkedin.com/in/lisadizon",
+                    "jobTitle": "Marketing Associate",
+                    "company": "Coca-Cola",
+                    "location": "Atlanta, GA",
+                    "fsaRole": "Secretary (2020-2021)"
                 }
             ]
         },
@@ -80,23 +151,45 @@
             "graduates": [
                 {
                     "name": "Marco de la Cruz",
-                    "major": "Business Administration"
+                    "major": "Business Administration",
+                    "jobTitle": "Business Analyst",
+                    "company": "Deloitte",
+                    "location": "New York, NY",
+                    "fsaRole": "President (2019-2020)"
                 },
                 {
                     "name": "Olivia Santos",
-                    "major": "Civil Engineering"
+                    "major": "Civil Engineering",
+                    "email": "olivia.santos@email.com",
+                    "jobTitle": "Civil Engineer",
+                    "company": "AECOM",
+                    "location": "Los Angeles, CA",
+                    "fsaRole": "Vice President (2019-2020)"
                 },
                 {
                     "name": "Gabriel Tan",
-                    "major": "Information Systems"
+                    "major": "Information Systems",
+                    "jobTitle": "IT Consultant",
+                    "company": "Accenture",
+                    "location": "Chicago, IL",
+                    "fsaRole": "Webmaster"
                 },
                 {
                     "name": "Angela Reyes",
-                    "major": "Psychology"
+                    "major": "Psychology",
+                    "jobTitle": "HR Specialist",
+                    "company": "Johnson & Johnson",
+                    "location": "New Brunswick, NJ",
+                    "fsaRole": "Secretary (2019-2020)"
                 },
                 {
                     "name": "Daniel Lopez",
-                    "major": "Computer Science"
+                    "major": "Computer Science",
+                    "linkedin": "https://linkedin.com/in/daniellopez",
+                    "jobTitle": "Frontend Developer",
+                    "company": "Spotify",
+                    "location": "New York, NY",
+                    "fsaRole": "Events Chair"
                 }
             ]
         }
