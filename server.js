@@ -67,7 +67,6 @@ app.get('/api/events', async (req, res) => {
             endTime: event.end.dateTime || event.end.date,
             location: event.location || 'TBD',
             description: event.description || '',
-            image: 'images/event-default.jpg', // Default image
             highlights: event.description
                 ? event.description.split('\n').filter(line => line.trim())
                 : [],

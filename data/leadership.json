@@ -4,37 +4,37 @@
             "name": "Luke Orlan Balaguer",
             "position": "President",
             "email": "lbalague@andrew.cmu.edu",
-            "image": "images/president.jpg"
+            "image": "images/leadership/president.jpg"
         },
         {
             "name": "Alessandra Fusaro",
             "position": "Vice President",
-            "image": "images/vice-president.jpg"
+            "image": "images/leadership/vice-president.jpg"
         },
         {
             "name": "Miguel Salvacion",
             "position": "Treasurer",
-            "image": "images/treasurer.jpg"
+            "image": "images/leadership/treasurer.jpg"
         },
         {
             "name": "Emma Sawi",
             "position": "Secretary",
-            "image": "images/secretary.jpg"
+            "image": "images/leadership/secretary.jpg"
         },
         {
             "name": "Rebecca Sucgang",
             "position": "Social Media Officer",
-            "image": "images/social-media.jpg"
+            "image": "images/leadership/social-media.jpg"
         },
         {
             "name": "Elena Nunez",
             "position": "Design Chair",
-            "image": "images/design.jpg"
+            "image": "images/leadership/design.jpg"
         }
     ],
     "facultyAdvisor": {
         "name": "Conrad Zapanta",
-        "image": "images/advisor.jpg",
+        "image": "images/leadership/advisor.jpg",
         "title": "Teaching Professor, Biomedical Engineering\nAssociate Dean for Undergraduate Studies, Biomedical Engineering",
         "email": "czapanta@andrew.cmu.edu"
     }

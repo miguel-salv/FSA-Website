@@ -310,7 +310,7 @@ nav {
     align-self: center;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .menu-icon {
         display: block;
     }
@@ -416,6 +416,40 @@ nav {
         bottom: -5px;
         left: 25%;
         width: 50%;
+    }
+}
+
+.nav-menu .btn-join {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-primary);
+    border: none;
+    margin-left: 1rem;
+}
+
+.nav-menu .btn-join:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: var(--gradient-secondary);
+    color: var(--text-color);
+}
+
+.nav-menu .btn-join::before {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .nav-menu .btn-join {
+        margin: 1rem 0;
+        width: 100%;
+        text-align: center;
     }
 }
 

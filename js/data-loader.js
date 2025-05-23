@@ -104,7 +104,7 @@ async function renderAlumni() {
                     <div class="alumni-card">
                         <div class="alumni-card-top">
                             <div class="alumni-image">
-                                <img src="${graduate.photo && graduate.photo.trim() !== '' ? graduate.photo : 'images/placeholder-profile.png'}" alt="${graduate.name}">
+                                <img src="${graduate.photo && graduate.photo.trim() !== '' ? graduate.photo : 'images/placeholders/placeholder-profile.png'}" alt="${graduate.name}">
                             </div>
                             <div class="alumni-main-info">
                                 <h4 class="alumni-name">${graduate.name}</h4>
