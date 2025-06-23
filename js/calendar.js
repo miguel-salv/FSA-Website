@@ -68,7 +68,7 @@ async function initCalendar() {
         const calendarId = window.appConfig.googleCalendarId;
 
         // Fetch events from calendar-events.json
-        const response = await fetch('calendar-events.json');
+        const response = await fetch('calendar-events.json?v=' + new Date().getTime());
         if (!response.ok) {
             throw new Error(`Failed to load events: ${response.status}`);
         }
