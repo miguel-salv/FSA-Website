@@ -50,22 +50,33 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Create dots
     slides.forEach((_, index) => {
-        const dot = document.createElement('div');
+        const dot = document.createElement('button');
         dot.classList.add('dot');
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        dot.setAttribute('tabindex', '0');
+        dot.setAttribute('type', 'button');
         if (index === 0) dot.classList.add('active');
         dot.addEventListener('click', () => {
             clearInterval(slideInterval);
             goToSlide(index);
             startAutoScroll();
+            dot.focus();
+        });
+        dot.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                goToSlide(index);
+            }
         });
         dotsContainer.appendChild(dot);
     });
     
-    const dots = document.querySelectorAll('.dot');
+    const dots = dotsContainer.querySelectorAll('.dot');
     
     function updateDots() {
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
+            dot.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
         });
     }
     
@@ -74,16 +85,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const offset = -currentIndex * 100;
         carousel.style.transform = `translateX(${offset}%)`;
         updateDots();
+        slides.forEach((slide, i) => {
+            slide.setAttribute('aria-hidden', i !== currentIndex);
+        });
     }
     
     function nextSlide() {
         currentIndex = (currentIndex + 1) % slideCount;
         goToSlide(currentIndex);
+        dots[currentIndex].focus();
     }
     
     function prevSlide() {
         currentIndex = (currentIndex - 1 + slideCount) % slideCount;
         goToSlide(currentIndex);
+        dots[currentIndex].focus();
     }
     
     function startAutoScroll() {
@@ -97,40 +113,52 @@ document.addEventListener('DOMContentLoaded', () => {
         prevSlide();
         startAutoScroll();
     });
-    
+    prevButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            prevSlide();
+        }
+    });
     nextButton.addEventListener('click', () => {
         clearInterval(slideInterval);
         nextSlide();
         startAutoScroll();
     });
-    
+    nextButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            nextSlide();
+        }
+    });
+    // Keyboard navigation for carousel dots only
+    dotsContainer.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
     // Start auto-scrolling
     startAutoScroll();
-    
     // Pause auto-advance on hover
     carousel.addEventListener('mouseenter', () => {
         clearInterval(slideInterval);
     });
-    
     carousel.addEventListener('mouseleave', () => {
         startAutoScroll();
     });
-    
     // Touch support for mobile
     let touchStartX = 0;
     let touchEndX = 0;
-    
     carousel.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
         clearInterval(slideInterval);
     });
-    
     carousel.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
         startAutoScroll();
     });
-    
     function handleSwipe() {
         const swipeThreshold = 50;
         if (touchEndX < touchStartX - swipeThreshold) {
@@ -139,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
             prevSlide();
         }
     }
-    
     // Handle visibility change
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
@@ -147,6 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             startAutoScroll();
         }
+    });
+    // Set initial ARIA attributes
+    slides.forEach((slide, i) => {
+        slide.setAttribute('aria-hidden', i !== currentIndex);
     });
 });
 
