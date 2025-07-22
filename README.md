@@ -1,28 +1,71 @@
-# FSA Website Maintenance Guide
 
-This guide explains how to run and maintain the Filipino Student Association (FSA) website.
+<div align="center">
 
-## Quick Start
+# FSA-Website
 
-1. Clone the repository
-2. Install dependencies:
-    ```bash
-    npm install
-    ```
-3. Create a `.env` file in the root directory (see Google Calendar API Setup section)
-4. Start the development server:
-    ```bash
-    npm run dev
-    ```
-5. Open `http://localhost:3000` in your web browser
+[![last commit](https://img.shields.io/github/last-commit/miguel-salv/FSA-Website?style=plastic)](https://github.com/miguel-salv/FSA-Website/commits/main)
+[![stars](https://img.shields.io/github/stars/miguel-salv/FSA-Website?style=plastic)](https://github.com/miguel-salv/FSA-Website/stargazers)
+[![forks](https://img.shields.io/github/forks/miguel-salv/FSA-Website?style=plastic)](https://github.com/miguel-salv/FSA-Website/network/members)
+[![issues](https://img.shields.io/github/issues/miguel-salv/FSA-Website?style=plastic)](https://github.com/miguel-salv/FSA-Website/issues)
+[![license](https://img.shields.io/github/license/miguel-salv/FSA-Website?style=plastic)](LICENSE)
 
-## Content Structure
+</div>
 
-The website uses a data-driven approach where content is stored in JSON files in the `data` directory:
+This repository contains the website for the Filipino Student Association (FSA). The FSA website aims to connect Filipino and Filipino-American students. It offers information about the organization's mission, events, leadership, and alumni network.
 
-- `data/leadership.json`: Executive board members and faculty advisor information
-- `data/alumni.json`: Alumni information organized by graduation year
-- `data/calendar.json`: Google Calendar integration settings
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Running the Project](#running-the-project)
+- [Content Management](#content-management)
+- [Calendar Setup](#calendar-setup)
+- [New Google Calendar](#new-google-calendar)
+
+## Features
+
+- **Data-driven content:** Content such as leadership, alumni, and calendar information is managed through JSON files.
+- **Calendar integration:** Fetches and displays events from a Google Calendar, allowing dynamic updates to the website's event listings.
+- **Modular design:** Utilizes reusable HTML components for header and footer.
+- **Responsive layout:** Provides an optimal viewing experience across a wide range of devices.
+- **Image Carousel:** Showcases highlighted events using a dynamic photo carousel.
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/miguel-salv/FSA-Website.git
+```
+
+2.  Navigate to the project directory:
+
+```bash
+cd FSA-Website
+```
+
+3.  Install the dependencies:
+
+```bash
+npm install
+```
+
+4.  Create a `.env` file in the root directory (see Calendar Setup section):
+
+```
+GOOGLE_CALENDAR_ID=your-calendar-id@group.calendar.google.com
+GOOGLE_CALENDAR_API_KEY=your-api-key
+```
+
+## Running the Project
+
+1.  To start the development server, run:
+
+```bash
+npm run dev
+```
+
+2.  Open `http://localhost:3000` in your web browser.
 
 ## Content Management
 
@@ -39,8 +82,7 @@ The website uses a data-driven approach where content is stored in JSON files in
     }
     ```
 4. To add a new member, copy an existing member object and update the values
-5. To remove a member, delete their object from the array
-6. Make sure to add the corresponding image file in the `images` directory
+6. Add the corresponding image file in the `images` directory
 
 ### Faculty Advisor
 
@@ -76,39 +118,8 @@ The website uses a data-driven approach where content is stored in JSON files in
     - Copy an existing year group
     - Update the `year` value
     - Update the `graduates` array
-6. To remove a graduate:
-    - Find their entry in the appropriate year group
-    - Delete their object from the `graduates` array
 
-## Calendar Integration
-
-### Configuration
-
-This should only be done if necessary. Use the existing Google Calendar if possible.
-
-1. Open `data/calendar.json`
-2. Configure the following settings:
-    ```json
-    {
-        "subscriptionUrl": "https://calendar.google.com/calendar/ical/your-calendar-id/basic.ics"
-    }
-    ```
-3. Update the `subscriptionUrl` with your Google Calendar's subscription URL
-
-### Getting Calendar URL
-
-1. Go to your Google Calendar settings
-2. Find your calendar under "Settings for my calendars"
-3. Scroll down to "Access permissions for events"
-4. Ensure that "Make available to public" is checked, and dropdown is set to "See all event details"
-5. Copy the "Get shareable link" for `subscriptionUrl`
-
-### Managing Events
-
-1. Add events directly in Google Calendar, making sure to include the location and details about the event
-2. Events will automatically appear on the website
-
-## Google Calendar API Setup
+## Calendar Setup
 
 Ideally, the Google Calendar is passed down between boards so that this does not have to be manually set up. However, the `.env` file must still be manually created. The Google Calendar API key should not have be to updated ever. Contact the previous website owner for the API key.
 
@@ -117,19 +128,51 @@ Ideally, the Google Calendar is passed down between boards so that this does not
     GOOGLE_CALENDAR_ID=your-calendar-id@group.calendar.google.com
     GOOGLE_CALENDAR_API_KEY=your-api-key
     ```
+2. Important security notes:
+    - Never commit the `.env` file to version control
+    - Keep your private key secure
+    - The `.env` file should remain in the root directory
 
-## Creating a New Calendar
+### Managing Events
+
+1. Add events directly in Google Calendar, making sure to include the location and details about the event
+2. Events will automatically appear on the website
+
+## New Google Calendar
+
+This should only be done if necessary. Use the existing Google Calendar if possible.
+
+### Subscription URL
+
+1. Go to your Google Calendar settings
+2. Find your calendar under "Settings for my calendars"
+3. Scroll down to "Access permissions for events"
+4. Ensure that "Make available to public" is checked, and dropdown is set to "See all event details"
+5. Copy the "Get shareable link" for `subscriptionUrl`
+6. Open `data/calendar.json`
+7. Update the `subscriptionUrl` with your Google Calendar's subscription URLs:
+    ```json
+    {
+        "subscriptionUrl": "https://calendar.google.com/calendar/ical/your-calendar-id/basic.ics"
+    }
+    ```
+
+### Calendar ID
 
 Once again, this should only be done if necessary. Use the existing Google Calendar if possible.
 
 To get your Google Calendar ID:
 
-- Go to your Google Calendar settings
-- Find your calendar under "Settings for my calendars"
-- Scroll down to "Integrate calendar"
-- Copy the "Calendar ID" value
+1. Go to your Google Calendar settings
+2. Find your calendar under "Settings for my calendars"
+3. Scroll down to "Integrate calendar"
+4. Copy the "Calendar ID" value
+5. Update `.env` file:
+    ```
+    GOOGLE_CALENDAR_ID=your-calendar-id@group.calendar.google.com
+    ```
 
-## Creating a New Calendar API
+### Creating a New Calendar API
 
 This should not have to be done ever, but just in case:
 
@@ -142,15 +185,3 @@ This should not have to be done ever, but just in case:
     - Click "Create Credentials" and select "API Key"
     - Copy the generated API key
     - (Optional) Restrict the API key to only the Calendar API for security
-
-2. Important security notes:
-    - Never commit the `.env` file to version control
-    - Keep your private key secure
-    - The `.env` file should remain in the root directory
-
-## Troubleshooting
-
-If you encounter any issues:
-
-1. Check the browser's developer console for error messages
-2. If all else fails, contact miguelsalvacion42@gmail.com for technical support
